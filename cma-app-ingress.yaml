@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cma-ingress-service
+  namespace: cma-app-dev
+  labels:
+    name: cma-ingress-service
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: cma-app.globalfrontier.co.uk
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: cma-app-service
+            port: 
+              number: 80
